@@ -104,7 +104,7 @@ Window {
             Connections {
                 id: connectionsSlider
                 target: slider
-                onValueChanged: {
+                function onValueChanged() {
                     connectionListView.enabled = false
                     if (listView.count === 0 | slider.value == 0)
                         listView.positionViewAtBeginning()
@@ -141,7 +141,7 @@ Window {
             Connections {
                 id: connectionListView
                 target: listView
-                onContentYChanged: {
+                function onContentYChanged() {
                     timerY.restart()
                 }
             }
@@ -163,12 +163,16 @@ Window {
 
             Connections {
                 target: listView
-                onCountChanged: textCount.updateText()
+                function onCountChanged() {
+                    textCount.updateText()
+                }
             }
 
             Connections {
                 target: slider
-                onValueChanged: textCount.updateText()
+                function onValueChanged() {
+                    textCount.updateText()
+                }
             }
 
             elide: Text.ElideMiddle
